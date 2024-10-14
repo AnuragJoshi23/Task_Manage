@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee View</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="side-panel">
+            <h2>Employee Menu</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="employee.html">Tasks</a></li>
+                <li><a href="#">Attendance</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Your Tasks</h1>
+            <div id="taskList">
+                <!-- Tasks will be dynamically populated here -->
+            </div>
+            <h2>Attendance Calendar</h2>
+            <div id="attendanceCalendar"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

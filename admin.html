@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin View</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="side-panel">
+            <h2>Admin Menu</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="admin.html">Task Management</a></li>
+                <li><a href="#">All Employees Attendance</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Admin Panel</h1>
+
+            <!-- Toggle Buttons for switching between Calendar and Task List -->
+            <button id="viewCalendarBtn">View Calendar</button>
+            <button id="viewTasksBtn">View Tasks</button>
+
+            <!-- Calendar Section -->
+            <div id="calendar" class="content-section"></div>
+
+            <!-- Task Management Section -->
+            <div id="adminTaskList" class="content-section" style="display:none;">
+                <h2>Task List</h2>
+                <!-- Search Bar for Filtering Tasks -->
+                <input type="text" id="searchTask" placeholder="Search for tasks or employees">
+                <!-- Sorted tasks will be displayed here -->
+                <div id="taskContainer"></div>
+                <h2>Assign Task</h2>
+                <form id="taskAssignForm">
+                    <input type="text" id="employees" placeholder="Employee Names (comma separated)" required>
+                    <input type="text" id="task" placeholder="Task Description" required>
+                    <button type="submit">Assign Task</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+    <script>
+        // Toggle between Calendar and Task Management views
+        const calendarDiv = document.getElementById('calendar');
+        const taskListDiv = document.getElementById('adminTaskList');
+        const viewCalendarBtn = document.getElementById('viewCalendarBtn');
+        const viewTasksBtn = document.getElementById('viewTasksBtn');
+
+        viewCalendarBtn.addEventListener('click', () => {
+            calendarDiv.style.display = 'block';
+            taskListDiv.style.display = 'none';
+        });
+
+        viewTasksBtn.addEventListener('click', () => {
+            calendarDiv.style.display = 'none';
+            taskListDiv.style.display = 'block';
+        });
+
+        // Search functionality for task list
+        const searchTaskInput = document.getElementById('searchTask');
+        searchTaskInput.addEventListener('keyup', function() {
+            const searchQuery = searchTaskInput.value.toLowerCase();
+            const tasks = document.querySelectorAll('#taskContainer div');
+            tasks.forEach(task => {
+                const taskText = task.textContent.toLowerCase();
+                if (taskText.includes(searchQuery)) {
+                    task.style.display = 'block';
+                } else {
+                    task.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
